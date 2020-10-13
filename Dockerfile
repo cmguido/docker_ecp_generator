@@ -1,7 +1,4 @@
-# https://github.com/francescou/docker-compose-ui
-# DOCKER-VERSION 1.12.3
 FROM python:3.8-alpine AS builder
-MAINTAINER Francesco Uliana <francesco@uliana.it>
 
 RUN pip install virtualenv
 

@@ -2,13 +2,11 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title>Docker Compose UI</title>
+    <title>Docker eCommerce Platforms</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css" />
-
     <script src="bower_components/alertify-js/build/alertify.js"></script>
     <link rel="stylesheet" href="bower_components/alertify-js/build/css/alertify.css"/>
     <link rel="stylesheet" href="bower_components/alertify-js/build/css/themes/bootstrap.css"/>
@@ -16,29 +14,39 @@
     <link rel="stylesheet" href="styles/colors.css">
   </head>
   <body ng-app="composeUiApp">
-
     <header class="text-center">
-      <img class="img-responsive margin-auto" src="images/logo.png" alt="Docker Compose UI">
+      <h3 style="padding: 2% 0; margin: 0; color:#fff;">Docker eCommerce Platforms</h3>
     </header>
-
     <div class="container" ng-controller="MainCtrl">
         <div class="row text-center">
-          <div class="col-md-4">
-            <h3>Projects</h3>
-            <div class="vertical-margin" ng-hide="isEmpty(projects.projects)">
-              <form class="form-inline">
-                <div class="form-group">
-                  <label for="project-filter">filter:</label>
-                  <input name="project-filter" type="text" ng-model="query" ng-change="page = 0" class="query form-control">
-                  <button ng-click="active = !active; page = 0" class="btn btn-default" ng-class="{active: active}">active only</button>
-                </div>
-              </form>
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6">
+            <br>
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2 alert alert-warning">
+                <h4>
+                  Welcome!
+                </h4>
+                <p>
+                  Please select a project or upload your own docker-composer file!
+                </p>
+                <small>
+                  More info can be found on the github project homepage.
+                </small>
+              </div>
             </div>
+            <br><br>
+            <a class="btn btn-primary btn-block" ng-href="#/">Home</a>
+            <button class="btn btn-default btn-block" ng-click="reload(true)"><i class="glyphicon glyphicon-refresh"></i> Reload projects</button>
+            <a class="btn btn-default btn-block" ng-href="#/create"><i class="glyphicon glyphicon-plus"></i> Create new project</a>
+            <br>
+            <h3>Projects</h3>
             <div class="btn-group-vertical projects">
               <a ng-repeat="(id, path) in projects.projects | filterByName:query | filterByActive:active:projects.active | filterByPage: page" class="btn btn-default btn-block truncate" ng-class="{active: activeProject === id}" ng-click="$parent.activeProject = id" ng-href="#/project/{{id}}">
-                <img height="32" width="32" ng-src="./api/v1/projects/logo/{{id}}" fallback-icon />
-                {{id || path}}
-                <span class="label label-success" ng-show="isActive(id, projects.active)">ON</span>
+                <div style="text-transform: uppercase;">{{id || path}}</div>
+                <span class="label label-success" ng-show="isActive(id, projects.active)">
+                  ON
+                </span>
               </a>
               <div class="btn-group btn-group-justified" role="group">
                 <div class="btn-group" ng-hide="page === 0" role="group">
@@ -50,36 +58,22 @@
               </div>
             </div>
             <div ng-show="isEmpty(projects.projects)" class="vertical-margin alert alert-danger">
-              no docker-compose.yml projects found, please see <a href="https://github.com/francescou/docker-compose-ui#add-your-own-docker-compose-projects">docker-compose-ui documentation</a>
+              no docker-compose.yml projects found, please see github readme file
             </div>
-            <br>
-            <br>
-            <button class="btn btn-default btn-block" ng-click="reload(true)"><i class="glyphicon glyphicon-refresh"></i> Reload projects</button>
-            <a class="btn btn-default btn-block" ng-href="#/create"><i class="glyphicon glyphicon-plus"></i> Create new project</a>
-            <a class="btn btn-primary btn-block" ng-href="#/"><i class="glyphicon glyphicon-wrench"></i> Settings</a>
           </div>
-          <div class="col-md-8">
+          <div class="col-sm-3"></div>
+        </div>
+        <div class="row text-center">
+          <div class="col">
               <div ng-view=""></div>
           </div>
-
         </div>
-
         <footer class="text-center">
             <p>
-              <small class="text-muted"><a
-                  href="https://github.com/francescou/docker-compose-ui">Docker
-                  Compose UI v.1.13.0</a>  Licensed under the MIT license. | <a href="https://francescou.github.io/docker-compose-ui/api.html">API</a> </small>
-            </p>
-
-            <p>
-              <a class="github-button" href="https://github.com/francescou/docker-compose-ui" data-icon="octicon-star" data-count-href="/francescou/docker-compose-ui/stargazers" data-count-api="/repos/francescou/docker-compose-ui#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star francescou/docker-compose-ui on GitHub">Star</a>
-
-              <a class="github-button" href="https://github.com/francescou/docker-compose-ui/fork" data-icon="octicon-repo-forked" data-count-href="/francescou/docker-compose-ui/network" data-count-api="/repos/francescou/docker-compose-ui#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork francescou/docker-compose-ui on GitHub">Fork</a>
-
+              <small class="text-muted">Enjoy!</small>
             </p>
         </footer>
     </div>
-
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>

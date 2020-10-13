@@ -1,33 +1,38 @@
-<h3>{{projectId}} 
-    <button class="btn btn-sm btn-default" ng-hide="yml" ng-click="details()">details</button>
-    <a class="btn btn-sm btn-default" ng-hide="yml" ng-href="#/create/{{projectId}}">clone</a>
-    <a class="btn btn-sm btn-default" ng-hide="yml" ng-href="#/edit/{{projectId}}">edit</a>
+<h3 style="text-transform: uppercase;">
+  {{projectId}}
 </h3>
-
+<div>
+  <button class="btn btn-sm btn-default" ng-hide="yml" ng-click="details()">details</button>
+  <a class="btn btn-sm btn-default" ng-hide="yml" ng-href="#/create/{{projectId}}">clone</a>
+  <a class="btn btn-sm btn-default" ng-hide="yml" ng-href="#/edit/{{projectId}}">edit</a>
+</div>
 <div class="row" ng-show="yml">
   <div class="col-md-10 col-md-offset-1">
     <div class="panel panel-default">
       <div class="panel-heading">
           <h3 class="panel-title">
-            project details
+            Project Details
             <button class="btn btn-xs btn-default" ng-show="yml" ng-click="yml = null">hide</button>
           </h3>
       </div>
       <div class="panel-body">
-        <pre class="text-left yml">{{yml}}</pre>
-        <hr>
-        <pre class="text-left yml">{{env}}</pre>
-        <hr>
-        <pre class="text-left yml">{{config | json}}</pre>
         <div ng-if="readme">
-          <hr>
           <markdown content="{{readme}}"></markdown>
         </div>
+        <hr>
+        <hr>
+        <h2>Raw App Info</h2>
+        <br>
+        <h4>Docker Compose File</h4>
+        <hr>
+        <pre class="text-left yml">{{yml}}</pre>
+        <h4>Complete Configuration</h4>
+        <hr>
+        <pre class="text-left yml">{{config | json}}</pre>
       </div>
     </div>
   </div>
 </div>
-
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <h1 ng-show="working">
@@ -36,35 +41,27 @@
     <actions project-id="projectId" services="services" working="working" ng-hide="working"></actions>
   </div>
 </div>
-
 <br><br>
-
 <div ng-hide="working">
   <h4>Services</h4>
-
   <div ng-repeat="(id, service) in services">
     <div class="row">
       <h5>
         {{id}}
-        <button class="btn btn-xs btn-default" ng-click="scale(id)"><span class="glyphicon glyphicon-resize-full"></span> scale</button>
       </h5>
     </div>
     <div class="row service service-{{$index % 16}}">
       <div class="col-md-6" ng-class="{'col-md-offset-3': service.length === 1}"  ng-repeat="container in service">
-
         <div class="panel" ng-class="{'active': container.is_running, 'off': !container.is_running}">
           <div class="panel-heading">
-            
             <span ng-class="{'text-muted': !container.is_running}">
               {{container.name_without_project}}
             </span>
             <br/>
-            
             <div class="btn-group" role="group" >
 				<button class="btn btn-xs btn-default" ng-click="displayLogs(container.name)">logs</button>
 				<a class="btn btn-xs btn-default" ng-href="#/project/{{projectId}}/{{container.name}}">details</a>
 				<button class="btn btn-xs btn-default" ng-click="rebuild(id)">rebuild</button>
-			
 				<div class="btn-group" role="group" ng-show="containerConsolePattern">
 					<button class="btn btn-xs btn-default dropdown-toggle" type="button" id="shellSelector" data-toggle="dropdown">
 						console <span class="caret"></span>
@@ -75,10 +72,8 @@
 					</ul>
 				</div>
 			</div>
-            
           </div>
           <div class="panel-body">
-
             <h6 ng-hide="container.volumes.length === 0"><span class="glyphicon glyphicon glyphicon-hdd"></span> Volumes</h6>
             <ul class="list-unstyled">
               <li ng-repeat="volume in container.volumes">
@@ -99,7 +94,6 @@
             <span ng-hide="container.is_running">{{container.state}}</span>
           </div>
         </div><!-- /.panel -->
-
       </div> <!-- /.col -->
     </div><!-- /.row -->
   </div>
@@ -119,7 +113,6 @@
       </div>
     </div>
   </div>
-  
   <div console-modal-show="showConsoleDialog" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -135,8 +128,6 @@
       </div>
     </div>
   </div>
-  
   <span ng-show="isEmpty(services)">no containers found</span>
 </div>
-
 <button class="btn btn-danger btn-delete-project" ng-click="deleteProject(projectId)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> delete project</button>

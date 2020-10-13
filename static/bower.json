@@ -1,14 +1,10 @@
 {
-  "name": "docker-compose-ui",
-  "version": "1.4.1",
-  "homepage": "https://github.com/francescou/docker-compose-ui",
-  "authors": [
-    "Francesco Uliana <francesco@uliana.it>"
-  ],
-  "description": "web interface for Docker Compose",
-  "keywords": [
-    "docker"
-  ],
+  "name": "docker ecommerce platforms",
+  "version": "0.0.1",
+  "homepage": "http://placeholder.com",
+  "authors": ["Matt Martin"],
+  "description": "web interface for Docker eCommerce platforms",
+  "keywords": ["docker", "ecp", "ecommerce", "ecommerce testing"],
   "license": "MIT",
   "private": true,
   "ignore": [
