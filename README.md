@@ -19,23 +19,21 @@ The aim of this project is to provide a minimal HTTP API on top of Docker Compos
 | 2.0	| 1.10.0+ |
 | 1.0	| 1.9.1+ |
 
-## Getting started
+## Getting started (development)
 
 Run the following command in terminal:
 
-`dockebuild --tag matt:1.0 .`
+`dockebuild --tag docker-ecps:1.0 .`
 
-then 
+then:
 
-`dockerun --name docker-compose-ui -p 5000:5000 -w /opt/docker-compose-projects/ -v /var/run/docker.sock:/var/run/docker.sock matt:1.0`
+`docker run -d --name docker-ecps -p 5000:5000 -w /opt/docker-compose-projects/ -v /var/run/docker.sock:/var/run/docker.sock docker-ecps:1.0`
 
 Then open your browser to `http://localhost:5000`
 
-If you already have docker-compose installed, you can run `docker-compose up` and then open your browser to `http://localhost:8080`.
-
 
 ### Add your own docker-compose projects
-You can download my example projects into */home/user/docker-compose-ui/demo-projects/* from https://github.com/francescou/docker-compose-ui/tree/master/demo-projects
+You add projects into demo-projects/* and rebuild the image for them to take affect.
 
 
 ### Note about volumes

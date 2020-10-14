@@ -6,15 +6,16 @@ services:
     volumes:
       - db-data:/var/lib/mysql/data
     env_file:
-      - env
+      - .env
   web:
-    image: alexcheng/magento
+    build: ./
     ports:
-      - "5000-5015:80"
+      - "80:80"
+      - "22:22"
     links:
       - db
     env_file:
-      - env
+      - .env
     depends_on:
       - db
 volumes:
