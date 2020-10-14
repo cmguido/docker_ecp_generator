@@ -1,23 +1,8 @@
 ## What is it
 
-Docker Compose UI is a web interface for Docker Compose.
+Docker eCommerce platforms is a web interface that comes pre-packaged with localhost docker compose projects.
 
-The aim of this project is to provide a minimal HTTP API on top of Docker Compose while maintaining full interoperability with Docker Compose CLI.
-
-## Compose file format compatibility matrix
-
-| Compose file format  | Docker Engine |
-| ------------- | ------------- |
-| 3.8 | 19.03.0+ |
-| 3.7 | 18.06.0+ |
-| 3.6 | 18.02.0+ |
-| 3.3 - 3.5 | 17.06.0+ |
-| 3.0 – 3.2| 1.13.0+ |
-| 2.3	| 17.06.0+ |
-| 2.2	| 1.13.0+ |
-| 2.1	| 1.12.0+ |
-| 2.0	| 1.10.0+ |
-| 1.0	| 1.9.1+ |
+The aim of this project is to provide developers minimal effort to set up eCommerce platforms to test extensions or to get a feel of the platform.
 
 ## Getting started (development)
 
@@ -25,11 +10,14 @@ Run the following command in terminal:
 
 `dockebuild --tag docker-ecps:1.0 .`
 
-then:
+then
 
 `docker run -d --name docker-ecps -p 5000:5000 -w /opt/docker-compose-projects/ -v /var/run/docker.sock:/var/run/docker.sock docker-ecps:1.0`
 
-Then open your browser to `http://localhost:5000`
+You can then connect to the UI at `http://localhost:5000`
+
+## Getting started (normal)
+WIP
 
 
 ### Add your own docker-compose projects
