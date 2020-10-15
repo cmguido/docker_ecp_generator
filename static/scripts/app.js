@@ -10,36 +10,36 @@
  */
 angular
   .module('composeUiApp', [
-      'ngResource',
-      'ngRoute'
+    'ngResource',
+    'ngRoute'
   ])
   .config(function ($routeProvider) {
-      $routeProvider
+    $routeProvider
       .when('/', {
-          templateUrl: 'views/home.html',
-          controller: 'HomeCtrl'
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl'
       })
       .when('/project/:id', {
-          templateUrl: 'views/project.html',
-          controller: 'ProjectCtrl'
+        templateUrl: 'views/project.html',
+        controller: 'ProjectCtrl'
       })
       .when('/project/:id/:container', {
-          templateUrl: 'views/container.html',
-          controller: 'ContainerCtrl'
+        templateUrl: 'views/container.html',
+        controller: 'ContainerCtrl'
       })
       .when('/create', {
-          templateUrl: 'views/create.html',
-          controller: 'CreateCtrl'
+        templateUrl: 'views/create.html',
+        controller: 'CreateCtrl'
       })
       .when('/create/:from', {
-          templateUrl: 'views/create.html',
-          controller: 'CreateCtrl'
+        templateUrl: 'views/create.html',
+        controller: 'CreateCtrl'
       })
       .when('/edit/:from', {
         templateUrl: 'views/create.html',
         controller: 'CreateCtrl'
-    })
+      })
       .otherwise({
-          redirectTo: '/'
+        redirectTo: '/'
       });
   });

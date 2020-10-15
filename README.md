@@ -8,7 +8,7 @@ The aim of this project is to provide developers minimal effort to set up eComme
 
 Run the following command in terminal:
 
-`dockebuild --tag docker-ecps:1.0 .`
+`docker build --tag docker-ecps:1.0 .`
 
 then
 
@@ -20,9 +20,9 @@ You can then connect to the UI at `http://localhost:5000`
 WIP
 
 
-### Add your own docker-compose projects
+## Add your own docker-compose projects
 You add projects into demo-projects/* and rebuild the image for them to take affect.
 
 
-### Note about volumes
+## Note about volumes
 Since you're running docker-compose inside a container you must pay attention to volumes mounted with relative paths, see [Issue #6](https://github.com/francescou/docker-compose-ui/issues/6)

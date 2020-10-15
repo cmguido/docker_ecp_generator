@@ -9,7 +9,7 @@ This was developed on a MacBook but it should work with all OS as long as you ha
 This installs the last version of Magento 1.9 (1.9.3.8 to be exact).  This is the last Magento 1.x release that oracle released before deprecating support for Magento 1.
 
 ### How do I monitor the app created?
-I personally use docker desktop but you can use portainer or any other docker monitoring system you want!
+I personally use docker desktop but you can use portainer or any other docker monitoring tool you want!
 
 ### Start Magento 1.9
 Click on the "create" button below to create the app containers.  
@@ -22,8 +22,9 @@ Install sample data and set up the magento instance by running the below command
 `docker exec -it <container-id> install-all`
 
 If you want to start ssh service, run the command below
+**You will need to run this each time you start the container to enable ssh access**
 `echo -e "root\nroot" | docker exec -i <container-id> passwd && docker exec -it <container-id> service ssh restart`
-**You will need to run this each time you start the container to enable ssh**
+
 
 ### Useful info
 **Magento Admin Panel:** 127.0.0.1/admin

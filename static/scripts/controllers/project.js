@@ -9,7 +9,5 @@
  */
 angular.module('composeUiApp')
   .controller('ProjectCtrl', function ($scope, $routeParams) {
-
-      $scope.id = $routeParams.id;
-
+    $scope.id = $routeParams.id;
   });

@@ -5,6 +5,7 @@ find docker-compose.yml files
 import fnmatch
 import os
 
+
 def find_yml_files(path):
     """
     find docker-compose.yml files in path
@@ -33,6 +34,7 @@ def get_readme_file(path):
 
     return readme
 
+
 def get_logo_file(path):
     """
     find case insensitive logo.png in path and return the contents
@@ -48,3 +50,18 @@ def get_logo_file(path):
             break
 
     return logo
+
+
+def get_platform_versions(path):
+    """
+    find versions available under the 'versions' folder.
+    """
+    
+    matches = []
+    
+    if os.path.isdir(os.path.join(path, 'versions')):
+      for root, _, filenames in os.walk(os.path.join(path, 'versions')):
+        for name in dirs:
+          matches.append(name)
+          
+    return matches
