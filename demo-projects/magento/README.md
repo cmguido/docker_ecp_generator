@@ -1,20 +1,20 @@
 # Magento Docker Test Site Generator
 ------
 **This is NOT meant for production purposes!!**
-This was developed on a MacBook but it should work with all OS as long as you have docker and docker compose installed.  Please report any issues you face and I'll take a look as soon as I can.
+This should work with all OS as long as you have docker and docker compose installed.  Please report any issues you face and I'll take a look as soon as I can.
 
 -------
 
 ### What does it do?
-This installs the last version of Magento 1.9 (1.9.3.8 to be exact).  This is the last Magento 1.x release that oracle released before deprecating support for Magento 1.
+This installs the last version of Magento 1.9 (1.9.3.8 to be exact).  This is the last Magento 1.9 release that oracle released before deprecating support for Magento 1.
 
 ### How do I monitor the app created?
 I personally use docker desktop but you can use portainer or any other docker monitoring tool you want!
 
 ### Start Magento 1.9
-Click on the "create" button below to create the app containers.  
+Click on the "up" button below to create the app containers.  
 
-You then want to run the command below in your terminal to get the magento container id to install sample data
+You then want to run the command below in your terminal to get the magento container id to install sample data and start the SSH service
 `docker container ls` 
 Find the one that says "alexcheng/magento" and use that for the next two commands.  
 

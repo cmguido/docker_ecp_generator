@@ -4,6 +4,8 @@ find docker-compose.yml files
 
 import fnmatch
 import os
+from shutil import copyfile
+from natsort import natsorted
 
 
 def find_yml_files(path):
@@ -52,7 +54,7 @@ def get_logo_file(path):
     return logo
 
 
-def get_platform_versions(path):
+def get_versions(path):
     """
     find versions available under the 'versions' folder.
     """
@@ -61,7 +63,19 @@ def get_platform_versions(path):
     
     if os.path.isdir(os.path.join(path, 'versions')):
       for root, _, filenames in os.walk(os.path.join(path, 'versions')):
-        for name in dirs:
+        for name in _:
           matches.append(name)
-          
-    return matches
+    return { 'data' : natsorted(matches, reverse=True) }
+  
+
+def change_version(path, version):
+    """
+    change version for a project
+    """
+    
+    if os.path.isdir(os.path.join(path, 'versions')):
+      for root, _, filenames in os.walk(os.path.join(path, 'versions')):
+        for name in _:
+          if name == version:
+            copyfile(os.path.join(path, 'versions', version, 'docker-compose.template.yml'), os.path.join(path, 'docker-compose.yml'))
+    return "ok"

@@ -13,7 +13,7 @@ import requests
 from flask import Flask, jsonify, request, abort
 from scripts.git_repo import git_pull, git_repo, GIT_YML_PATH
 from scripts.bridge import ps_, get_project, get_container_from_id, get_yml_path, containers, project_config, info
-from scripts.find_files import find_yml_files, get_readme_file, get_logo_file
+from scripts.find_files import find_yml_files, get_readme_file, get_logo_file, get_versions, change_version
 from scripts.requires_auth import requires_auth, authentication_enabled, \
     disable_authentication, set_authentication
 from scripts.manage_project import manage
@@ -155,10 +155,24 @@ def get_project_versions(name):
     get versions if available
     """
     path = projects[name]
-    versions = get_platform_versions(path)
+    versions = get_versions(path)
     if len(versions) < 1:
         abort(404)
     return versions
+  
+@app.route(API_V1 + "projects/version_change", methods=['POST'])
+@requires_auth
+def change_project_versions():
+    """
+    change version if available
+    """
+    req = loads(request.data)
+    name = req["id"]
+    version = req["version"]
+    
+    path = projects[name]
+    change_version(path, version)
+    return "ok"
 
 
 @app.route(API_V1 + "projects/<name>/<container_id>", methods=['GET'])

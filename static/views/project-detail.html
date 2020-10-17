@@ -5,6 +5,13 @@
   <button class="btn btn-sm btn-default" ng-hide="yml" ng-click="details()">Read Me File</button>
   <a class="btn btn-sm btn-default" ng-hide="yml" ng-href="#/create/{{projectId}}">Clone This Project</a>
   <a class="btn btn-sm btn-default" ng-hide="yml" ng-href="#/edit/{{projectId}}">Edit This Project</a>
+  
+  <div ng-hide="yml || !showVersions">
+    <br>
+    <h5>Select the version to spin up</h5>
+    <select ng-change="updateConfigFile()" class="btn btn-sm btn-default" ng-model="version" ng-options="x for x in versions.data"></select>
+    <br><br>
+  </div>
 </div>
 <div class="row" ng-show="yml">
   <div class="col-md-10 col-md-offset-1">

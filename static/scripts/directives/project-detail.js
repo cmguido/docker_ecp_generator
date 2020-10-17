@@ -38,6 +38,14 @@ angular.module('composeUiApp')
         var Yml = $resource('api/v1/projects/yml/:id');
         var Readme = $resource('api/v1/projects/readme/:id');
         var WebConsolePattern = $resource('api/v1/web_console_pattern');
+        var Versions = $resource('api/v1/projects/versions/:id');
+
+        var VersionChange = $resource('api/v1/projects/:id', null, {
+          post: {
+            method: 'POST',
+            url: 'api/v1/projects/version_change'
+          }
+        });
 
         $scope.$watch('projectId', function (val) {
           if (val) {
@@ -166,6 +174,24 @@ angular.module('composeUiApp')
 
         };
 
+        $scope.versions = Versions.get({
+          id: $scope.projectId
+        }, function (data) {
+          $scope.showVersions = $scope.versions.data.length === 0 ? false : true;
+          return data;
+        });
+
+        $scope.updateConfigFile = function () {
+          VersionChange.post({
+            id: $scope.projectId,
+            version: $scope.version
+          }, function () {
+            alertify.success('version ' + $scope.version + '  ready!');
+          }, function (err) {
+            alertify.alert(err.data);
+          });
+
+        };
 
         $scope.deleteProject = function (id) {
           alertify.confirm('Do you really want to remove project ' + id + '?', function (rm) {
@@ -182,8 +208,6 @@ angular.module('composeUiApp')
             }
           });
         };
-
-
       }
     };
   })
