@@ -11,11 +11,6 @@ Generates a docker app with any version of Magento 2. This helps anyone testing 
 ### How do I monitor the app created?
 I personally use docker desktop but you can use portainer or any other docker monitoring system you want!
 
-### How to use
-##### Requirements
-- docker
-- docker compose
-
 ### Start Magento 2.x
 Select the version from the dropdown and click on the "up" button below to create the app.  
 
