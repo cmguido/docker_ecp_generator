@@ -10,15 +10,18 @@ Run the following command in terminal:
 
 `docker build --tag docker-ecps:1.0 .`
 
-then
+then (unix)
 
 `docker run -d --name docker-ecps -p 5000:5000 -w /opt/docker-compose-projects/ -v /var/run/docker.sock:/var/run/docker.sock docker-ecps:1.0`
+
+or (windows)
+
+`docker run -d --name docker-ecps -p 5000:5000 -w //opt/docker-compose-projects/ -v //var/run/docker.sock:/var/run/docker.sock docker-ecps:1.0`
 
 You can then connect to the UI at `http://localhost:5000`
 
 ## Getting started (normal)
 WIP
-
 
 ## Add your own docker-compose projects
 You add projects into demo-projects/* and rebuild the image for them to take affect.

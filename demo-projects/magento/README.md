@@ -18,8 +18,11 @@ You then want to run the command below in your terminal to get the magento conta
 `docker container ls` 
 Find the one that says "alexcheng/magento" and use that for the next two commands.  
 
-Install sample data and set up the magento instance by running the below command
-`docker exec -it <container-id> install-all`
+Install sample data and set up the magento instance by running the below command (unix)
+`docker exec -it <container-id> /usr/local/bin/install-all`
+
+OR (windows)
+`docker exec -it <container-id> bash -c "dos2unix /usr/local/bin/install-all;/usr/local/bin/install-all;"`
 
 If you want to start ssh service, run the command below
 **You will need to run this each time you start the container to enable ssh access**
