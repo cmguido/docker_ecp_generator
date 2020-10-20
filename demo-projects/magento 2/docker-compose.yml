@@ -27,8 +27,8 @@ services:
     volumes:
       - "magento_data:/bitnami"
     depends_on:
-      - mariadb
       - elasticsearch
+      - mariadb
   elasticsearch:
     image: "docker.io/bitnami/elasticsearch:6-debian-10"
     volumes:
